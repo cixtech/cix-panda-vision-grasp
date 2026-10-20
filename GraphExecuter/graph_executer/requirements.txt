@@ -1,0 +1,7 @@
+# GraphExecuter UI (PandaVisionGrasp click -> /target_point)
+# Pinned for process_graph.json and ROS Humble cv_bridge; do not upgrade casually
+NodeGraphQt==0.6.38
+Qt.py>=2.0.0,<3
+PySide6>=6.5.0,<7
+opencv-python>=4.8.0,<5
+numpy>=1.23.0,<2.0

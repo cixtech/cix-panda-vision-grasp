@@ -1,0 +1,10 @@
+{
+  "main_window": {
+    "actionOpen_log_dir": "Open Log Directory",
+    "actionUpdate_log": "Update Log",
+    "menuHelp": "Help",
+    "menuTools": "Tool",
+    "actionexecute_graph": "Run Graph",
+    "actionexetute_from_goal_node": "Select Goal Node to Run Graph"
+  }
+}

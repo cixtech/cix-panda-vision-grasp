@@ -1,0 +1,3 @@
+# Ultralytics YOLO backend (x86 / when NPU is unavailable)
+-r requirements.txt
+ultralytics>=8.0.0,<9

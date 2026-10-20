@@ -1,0 +1,20 @@
+# colcon / ROS 2 build artifacts
+build/
+install/
+log/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# YOLO weights (AGPL-licensed Ultralytics model) - not distributed, see README
+*.pt
+
+# editors / OS
+.idea/
+.vscode/
+.claude/
+*.swp
+.DS_Store

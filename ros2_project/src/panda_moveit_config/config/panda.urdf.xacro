@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+    <xacro:arg name="initial_positions_file" default="$(find panda_moveit_config)/config/initial_positions.yaml"/>
+    <xacro:property name="PI" value="3.14159274"/>
+    <!-- Import panda urdf file -->
+    <xacro:include filename="$(find robot_description)/urdf/panda.urdf"/>
+    <!-- Lidar -->
+    <!-- <xacro:include filename="$(find robot_description)/urdf/lidar/lidar.xacro"/>
+    <xacro:lidar_v0 parent="panda_link7">
+        <origin xyz="-0.2 -0.2 0.2" rpy="0 ${PI/2} 0"/>
+    </xacro:lidar_v0> -->
+    <xacro:include filename="$(find robot_description)/urdf/camera/camera.xacro"/>
+    <!-- Camera mount on panda_link0; z must match DEFAULT_INTRINSICS["z"] in target_point_from_obb.py -->
+    <xacro:property name="camera_mount_z" value="0.45"/>
+    <xacro:camera_v0 parent="panda_link0">
+        <origin xyz="0.22 0.65 ${camera_mount_z}" rpy="0 ${PI/2} 0"/>
+    </xacro:camera_v0>
+    <xacro:camera_gazebo_v0/>
+    <gazebo>
+        <plugin
+        filename="gz_ros2_control-system"
+        name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find panda_moveit_config)/config/ros2_controllers.yaml</parameters>
+        </plugin>
+        <plugin
+        filename="gz-sim-joint-state-publisher-system"
+        name="gz::sim::systems::JointStatePublisher">
+    </plugin>
+        <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+    </gazebo>
+    <xacro:include filename="panda.gazebo.ros2_control.xacro" />
+    <xacro:panda_gazebo_ros2_control name="GazeboSimSystem"
+        initial_positions_file="$(arg initial_positions_file)"/>
+</robot>

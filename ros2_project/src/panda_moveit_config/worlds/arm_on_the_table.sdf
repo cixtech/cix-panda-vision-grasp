@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="arm_and_table">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+
+    <gui>
+      <camera name="user_camera">
+        <pose>0.75 -0.75 1.4 0 0.29 2.21</pose>
+      </camera>
+    </gui>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="table">
+      <static>true</static>
+      <include>
+        <uri>model://table</uri>
+      </include>
+      <pose>0.29 0 0 0 0 1.5708</pose>
+    </model>
+
+    <model name="bolt1">
+      <include>
+        <uri>model://bolt</uri>
+      </include>
+      <pose>0.55 0.42 1.05 0 1.5 0</pose>
+    </model>
+
+    <model name="bolt2">
+      <include>
+        <uri>model://bolt</uri>
+      </include>
+      <pose>0.42 0.72 1.05 0 -1.5 -2.82</pose>
+    </model>
+
+    <model name="hammer1">
+      <include>
+        <uri>model://hammer</uri>
+      </include>
+      <pose>0.52 0.28 1.078 1.5708 0 0.1</pose>
+    </model>
+
+    <model name="cole_hammer1">
+      <include>
+        <uri>model://cole_hammer</uri>
+      </include>
+      <pose>0.38 0.54 1.03 0 0 0.25</pose>
+    </model>
+
+    <model name="monkey_wrench1">
+      <include>
+        <uri>model://monkey_wrench</uri>
+      </include>
+      <pose>0.28 0.32 1.024 0 0 -0.55</pose>
+    </model>
+
+    <!-- Placement box on table right side (commander place point: x=0.3, y=-0.3) -->
+    <model name="place_bin">
+      <static>true</static>
+      <include>
+        <uri>model://place_bin</uri>
+      </include>
+      <pose>0.35 -0.30 1.002 0 0 0</pose>
+    </model>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <include>
+        <uri>model://ground_plane</uri>
+      </include>
+    </model>
+  </world>
+</sdf>

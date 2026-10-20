@@ -1,0 +1,61 @@
+cix-panda-vision-grasp
+======================
+
+This repository is a fork of laoxue888/Moveit2YoloObb
+(https://github.com/laoxue888/Moveit2YoloObb, MIT License, Copyright (c) 2025
+DimensionalEngineer). The upstream MIT License is retained in LICENSE and
+applies to all files inherited from upstream.
+
+Upstream base: commit ce16f5a (2026-03-18), the tip of the upstream repository
+at the time of the fork.
+
+CIX Technology Group modifications (Copyright 2026 Cix Technology Group Co.,
+Ltd, Apache-2.0) include:
+
+- CIX P1 (CD8180, aarch64) board adaptation: ARM64 build fixes, Mali GPU /
+  ZINK long-run guidance, localhost-only DDS configuration.
+- NPU YOLO inference backend: runs detection on the CIX NPU via the
+  `cix_ros_noe_yolo` package from the CIX Robotics SDK (not vendored here),
+  alongside the original Ultralytics backend.
+- `start_all.sh` orchestration (deps / build / start / stop), stale-process
+  cleanup, and per-component logging.
+- Adaptation and startup documentation (docs/).
+
+Files carrying CIX copyright headers are CIX modifications; everything else
+is inherited from upstream.
+
+Robot assets
+------------
+
+`ros2_project/src/robot_description` is the `panda_description` package from
+moveit_resources (https://github.com/moveit-resources/panda_description,
+BSD-3-Clause). Its Panda arm meshes are derived from `franka_description`
+(https://github.com/frankaemika/franka_description, Apache-2.0, Copyright
+Franka Robotics GmbH).
+
+`GraphExecuter/` is vendored from the upstream repository's submodule of the
+same name and carries its own LICENSE.
+
+The Gazebo world models under
+`ros2_project/src/panda_moveit_config/worlds/` (hammer, monkey_wrench,
+ground_plane, sun, table) are derived from the OSRF `gazebo_models`
+repository (https://github.com/osrf/gazebo_models, Apache-2.0, Copyright
+Open Source Robotics Foundation).
+
+The `cole_hammer` world model is derived from the Google Scanned Objects
+dataset (Copyright 2020 Google LLC, CC BY 4.0); its mesh files retain the
+CC BY 4.0 attribution.
+
+Weights files
+-------------
+
+The CPU-backend YOLO OBB weights file `best.pt` is NOT distributed with this
+repository (Ultralytics YOLOv8 weights are licensed AGPL-3.0,
+https://docs.ultralytics.com/models/yolov8/). Users download the copy trained
+by the upstream author from the upstream repository (see README).
+
+The NPU-backend compiled model `ros2_project/models/yolo_obb.cix` IS
+distributed with this repository. It is compiled from the same Ultralytics
+YOLOv8 OBB checkpoint and is therefore also licensed AGPL-3.0, applying to
+that file on top of the repository's MIT / Apache-2.0 code licensing.
+`start_all.sh` passes it to `cix_ros_noe_yolo` via `npu_model_path`.

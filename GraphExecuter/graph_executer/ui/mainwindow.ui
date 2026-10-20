@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>622</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GraphExecuter</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>false</bold>
+    </font>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="font">
+     <font>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionOpen_log_dir"/>
+    <addaction name="actionUpdate_log"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionexetute_from_goal_node"/>
+    <addaction name="actionexecute_graph"/>
+   </widget>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionexetute_from_goal_node"/>
+  </widget>
+  <action name="actionOpen_log_dir">
+   <property name="text">
+    <string>Open log folder</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+  </action>
+  <action name="actionUpdate_log">
+   <property name="text">
+    <string>Release notes</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+  </action>
+  <action name="actionexecute_graph">
+   <property name="text">
+    <string>Run entire graph</string>
+   </property>
+   <property name="iconText">
+    <string>Run all sink nodes in parallel threads</string>
+   </property>
+   <property name="toolTip">
+    <string>Run all sink nodes in parallel threads</string>
+   </property>
+  </action>
+  <action name="actionexetute_from_goal_node">
+   <property name="text">
+    <string>Run from selected node</string>
+   </property>
+   <property name="iconText">
+    <string>Execute downstream from the selected node</string>
+   </property>
+   <property name="toolTip">
+    <string>Execute downstream from the selected node</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
